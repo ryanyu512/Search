@@ -12,6 +12,8 @@ private:
 
 	std::list<int> *v;
 
+	void AddVertices(const int vertices);
+
 public:
 
 	Graph(const int num_of_vertices);
