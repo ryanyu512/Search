@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<vector>
+#include<list>
 
 class Graph {
 
@@ -33,6 +34,8 @@ public:
 	void AddEdge(const int vertice_a, const int vertice_b, const int weight);
 
 	void DijkstraAlgor(const int src_vertice);
+
+	std::list<int> FindShortestPath(const int tar_vertice);
 
 	void PrintDistRel2Src();
 };

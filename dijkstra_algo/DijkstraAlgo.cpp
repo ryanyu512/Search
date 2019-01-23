@@ -73,6 +73,32 @@ void Graph::DijkstraAlgor(const int src_vertice) {
 
 }
 
+std::list<int> Graph::FindShortestPath(const int tar_vertice) {
+	
+	std::list<int> shortest_path;
+
+	if (tar_vertice >= num_of_vertices)
+		return shortest_path;
+
+	int src_idx = tar_vertice;
+
+	shortest_path.push_front(tar_vertice);
+	while (src_idx != this->src_vertice) {
+		int min_dist = INT_MAX, min_vertice_idx;
+		for (int i = 0; i < v[src_idx].size(); i++) {
+			int tar_idx = v[src_idx][i].first;
+			if (min_dist > dist[tar_idx]) {
+				min_dist = dist[tar_idx];
+				min_vertice_idx = tar_idx;
+			}
+		}
+		shortest_path.push_front(min_vertice_idx);
+		src_idx = min_vertice_idx;
+	}
+
+	return shortest_path;
+}
+
 void Graph::PrintDistRel2Src() {
 	for (int i = 0; i < dist.size(); i++)
 		std::cout << "relative distance of vertice " << i << " from source vertice " << this->src_vertice << " is " << dist[i] << " " << std::endl;

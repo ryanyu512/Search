@@ -2,8 +2,10 @@
 
 int main() {
 
+	//initialize graph
 	Graph graph(7);
 
+	//add vertices
 	graph.AddEdge(0, 1, 2);
 	graph.AddEdge(0, 2, 5);
 
@@ -32,8 +34,22 @@ int main() {
 
 	graph.AddEdge(10, 6, 2);
 
+
+	//conduct Dijkstra's algo
 	graph.DijkstraAlgor(0);
+
+	//print out the shortest distance relative to source
 	graph.PrintDistRel2Src();
+
+	//find shortest path
+	std::list<int> shortest_path = graph.FindShortestPath(5);
+
+	std::list<int>::iterator itr = shortest_path.begin();
+
+	for (; itr != shortest_path.end(); ++itr) {
+		std::cout << *itr << " ";
+	}
+	std::cout << std::endl;
 
 	std::getchar(); std::getchar();
 	return 0;
